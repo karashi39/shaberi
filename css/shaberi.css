@@ -1,0 +1,13 @@
+body {
+    margin: 0 auto;
+}
+.chat {
+    font-size: 4vh;
+}
+.user {
+    max-width: 1280px;
+    font-size: 2.1vw;
+}
+.button-xsmall {
+    font-size: 70%;
+}

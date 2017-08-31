@@ -1,0 +1,35 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="ja">
+    <link rel="stylesheet" href="css/pure-release-1.0.0/pure-min.css">	
+    <link rel="stylesheet" href="css/shaberi.css">	
+    <title>ちゃっとならしゃべり</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/shaberi.js"></script>
+</head>
+<body style="margin: 10px; padding: 10px;">
+  <div class="pure-form user">
+    <input type="text" data-name="hname" size="8" value="誰か"/>
+    <select id='colour-select' data-name="colour"onchange="changeColor()">
+        <option style="color:black" selected>black</option>
+        <option style="color:blue">blue</option>
+        <option style="color:lightblue">lightblue</option>
+        <option style="color:royalblue">royalblue</option>
+        <option style="color:seagreen">seagreen</option>
+        <option style="color:orange">orange</option>
+        <option style="color:deeppink">deeppink</option>
+        <option style="color:lightpink">lightpink</option>
+        <option style="color:tomato">tomato</option>
+        <option style="color:grey">grey</option>
+    </select>
+    <input type="text" data-name="message" size="30" placeholder="ここに発言を入力"/>
+    <button type="submit" class="pure-button pure-button-primary" onClick="send()">発言</button>
+  </div>
+  <hr />
+  <div data-name="member-list" class="info">member: </div>
+  <hr />
+  <div data-name="chat" class="chat"></div>
+</body>
+</html>
