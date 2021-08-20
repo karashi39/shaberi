@@ -1,0 +1,23 @@
+{
+  "name": "shaberi",
+  "version": "1.0.0",
+  "description": "## USAGE",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karashi39/shaberi.git"
+  },
+  "author": "karashi39",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karashi39/shaberi/issues"
+  },
+  "homepage": "https://github.com/karashi39/shaberi#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-jquery": "^1.5.1"
+  }
+}
