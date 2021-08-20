@@ -1,5 +1,5 @@
 // 接続先URI
-var uri = "";
+var uri = "ws://localhost:9999";
 var webSocket = null;
 
 function init() {
@@ -24,7 +24,7 @@ function onOpen(event) {
 function onMessage(event) {
     if (event && event.data) {
         message = parseMsg(event.data);
-	chat(message);
+        chat(message);
     }
 }
 
@@ -40,43 +40,43 @@ function onClose(event) {
 
 function press(event) {
     if (event && event.which == 13) {
-	    send();
+        send();
     }
 }
 
 function parseMsg(message){
     // メッセージ表示
     console.log(message);
-    try{
+    try {
         var msg = JSON.parse(message);
-    }catch(e){
-	console.log('unparsable json message.');
-	colour = 'red';
+    } catch(e){
+        console.log('unparsable json message.');
+        colour = 'red';
     }
-    try{
-	colour = decodeURIComponent(escape(msg['colour']));
-    }catch (e){
-	if(!colour){
-	    colour = 'black';
-	}
+    try {
+        colour = decodeURIComponent(escape(msg['colour']));
+    } catch (e) {
+        if(!colour){
+            colour = 'black';
+        }
     }
     colour = '<span style="color:' + colour + '">'
-    try{
-	hname = decodeURIComponent(escape(msg['hname']));
-    }catch (e){
-	hname = '';
+    try {
+        hname = decodeURIComponent(escape(msg['hname']));
+    } catch (e){
+        hname = '';
     }
-    if(hname){hname = hname + ': ';}
-    try{
-	message = msg['message'];
-	message = decodeURIComponent(escape(message));
-    }catch (e){
+    if (hname) { hname = hname + ': '; }
+    try {
+        message = msg['message'];
+        message = decodeURIComponent(escape(message));
+    } catch (e) {
     }
-    if(msg['msg_type'] == 'member_list'){
-    	    console.log(message);
-	    member_list(message);
-	    return;
-	    //return '<span style="color:red">誰かの名前が変わりました</span>';
+    if (msg['msg_type'] == 'member_list') {
+        console.log(message);
+        member_list(message);
+        return;
+        //return '<span style="color:red">誰かの名前が変わりました</span>';
     }
     message = colour + hname + message + '</span>';
     console.log(message);
@@ -84,20 +84,20 @@ function parseMsg(message){
 }
 
 function send(){
-	var sendmsg = {};
-        sendmsg.message = $("[data-name='message']").val();
-        sendmsg.hname = $("[data-name='hname']").val();
-        sendmsg.colour = $("[data-name='colour']").val();
-        // 存在チェック
-        if (sendmsg.message && webSocket) {
-            // メッセージ送信
-	    sendmsg.message = decodeURIComponent(sendmsg.message);
-	    sendmsg.hname = decodeURIComponent(sendmsg.hname);
-            sendmsg = JSON.stringify(sendmsg);
-            webSocket.send(sendmsg);
-            // メッセージ初期化
-            $("[data-name='message']").val("");
-        }
+    var sendmsg = {};
+    sendmsg.message = $("[data-name='message']").val();
+    sendmsg.hname = $("[data-name='hname']").val();
+    sendmsg.colour = $("[data-name='colour']").val();
+    // 存在チェック
+    if (sendmsg.message && webSocket) {
+         // メッセージ送信
+        sendmsg.message = decodeURIComponent(sendmsg.message);
+        sendmsg.hname = decodeURIComponent(sendmsg.hname);
+        sendmsg = JSON.stringify(sendmsg);
+        webSocket.send(sendmsg);
+        // メッセージ初期化
+        $("[data-name='message']").val("");
+    }
 }
 
 // チャットに表示

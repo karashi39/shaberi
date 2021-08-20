@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from urllib.parse import unquote
 from websocket_server import WebsocketServer
 import json
